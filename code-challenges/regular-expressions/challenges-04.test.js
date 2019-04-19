@@ -59,7 +59,7 @@ const citiesAtoJ = (arr) => {
       newArray.push(a);
     }
   }
-)
+  )
 
   return newArray;
 };
