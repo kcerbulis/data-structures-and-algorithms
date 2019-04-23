@@ -34,7 +34,7 @@ the Internet has the actual regex you should use. It's many many lines long.
 ------------------------------------------------------------------------------------------------ */
 
 const validateEmail = (email) => {
-  const rxTester = /^(\D)+(\w)*((\.(\w)+)?)+@(\D)+(\w)*((\.(\D)+(\w)*)+)?(\.)[a-z]{2,}$/;
+  const rxTester = /^\w+\.?\w+@\w+\.\w{3}$/;
 
   if (rxTester.test(email)) return true;
 
