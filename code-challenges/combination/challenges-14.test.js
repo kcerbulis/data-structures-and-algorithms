@@ -9,7 +9,11 @@ For example, ['apple', 'banana', 'MacGyver'] returns ['Apple', 'Banana', 'MacGyv
 ------------------------------------------------------------------------------------------------ */
 
 const toTitleCase = (arr) => {
-  // Solution code here...
+  const result = arr.map(word => {
+    const wordLength = word.length;
+    return word.split('')[0].toUpperCase() + word.slice(1, wordLength);
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -84,7 +88,18 @@ let starWarsData = [{
 }];
 
 let biggerThanLuke = (arr) => {
-  // Solution code here...
+  const filter1 = arr.filter(object => {
+    if(object.mass > 77) return true;
+    return false;
+  });
+
+  const filetr2 = filter1.map(objectFiletred => {
+    return objectFiletred.name;
+  });
+
+  const result = filetr2.join(' - ');
+
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -102,7 +117,15 @@ This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
 const sortBy = (property, arr) => {
-  // Solution code here...
+  const result = arr.sort((a,b) => {
+    const aProp = a[property];
+    const bProp = b[property];
+
+    if(aProp > bProp) return 1;
+    if(aProp < bProp) return -1;
+    return 0;
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -155,7 +178,7 @@ Run your tests from the console: jest challenge-14.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should convert each word to title case', () => {
     const words = ['apple', 'banana', 'MacGyver'];
     expect(toTitleCase(words)).toStrictEqual(['Apple','Banana','MacGyver']);
@@ -164,14 +187,14 @@ xdescribe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should return only characters that are bigger than Luke', () => {
     expect(biggerThanLuke(starWarsData)).toStrictEqual('Darth Vader - Pex Kylar');
     expect(biggerThanLuke([])).toStrictEqual('');
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should sort items by a price', () => {
 
     expect(sortBy('price', [
